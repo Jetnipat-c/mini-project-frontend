@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <meta charSet="UTF-8" />
-        <title>Miniproject</title>
+        <title>MINI | BLOG</title>
         <link rel="shortcut icon" href="/logo.png" />
         <meta
           name="viewport"
