@@ -10,7 +10,7 @@ export default function Layout({ children }) {
   }, []);
   const switchTheme = () => {
     if (isMounted) {
-      setTheme(theme === "light" ? "Pink" : "light");
+      setTheme(theme === "light" ? "dark" : "light");
     }
   };
   return (

@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import Head from "next/head";
 import "tailwindcss/tailwind.css";
+import 'antd/dist/antd.css';
 import type { AppProps /*, AppContext */ } from "next/app";
 import { ThemeProvider } from "next-themes";
 function MyApp({ Component, pageProps }: AppProps) {
