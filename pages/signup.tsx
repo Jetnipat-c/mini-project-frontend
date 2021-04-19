@@ -12,15 +12,16 @@ const Signup = () => {
   const handleSignup = async (event) => {
     event.preventDefault();
     try {
-      let result = await axios.post("http://localhost:99/api/register", {
+      let result = await axios.post("http://localhost:6969/api/auth/register", {
         username,
-        password,
-        age,
         email,
+        password,
       });
       setStatus(result.data.message);
+      router.push('/signin')
     } catch (e) {
       console.log(e);
+      alert("มีชื่อผู้ใช้งานนี้ในระบบแล้ว")
     }
   };
   return (
@@ -81,7 +82,7 @@ const Signup = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="email-address" className="sr-only">
                 Age
               </label>
@@ -95,7 +96,7 @@ const Signup = () => {
                 placeholder="Age"
                 onChange={(e) => setAge(parseInt(e.target.value))}
               />
-            </div>
+            </div> */}
           </div>
 
           <div className="flex items-center justify-between">

@@ -10,12 +10,13 @@ const Signin = () => {
   const handleSignin = async (event) => {
     event.preventDefault();
     try {
-      let result = await axios.post("http://localhost:99/api/login", {
+      let result = await axios.post("http://localhost:6969/api/auth/login", {
         username,
         password,
         remember,
       });
       alert(JSON.stringify(result.data, null, 4));
+      router.push("/")
     } catch (err) {
       alert("Incorrect user or password.");
     }
