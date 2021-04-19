@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { Button, notification, Space } from 'antd';
 const Signin = () => {
   const router = useRouter();
   const [password, setPassword] = useState<string>("");
@@ -18,11 +19,19 @@ const Signin = () => {
       alert(JSON.stringify(result.data, null, 4));
       router.push("/")
     } catch (err) {
-      alert("Incorrect user or password.");
+      //alert("Incorrect user or password.");
+      openNotificationWithIcon('error')
     }
   };
   const reMem = async () => {
     setRemember(!remember);
+  };
+  const openNotificationWithIcon = type => {
+    notification[type]({
+      message: 'เข้าสู่ระบบผิดพลาด',
+      description:
+        'กรุณาตรวจสอบชื่อผู้ใช้งานหรือรหัสผู้ใช้งานให้ถูกต้อง',
+    });
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
