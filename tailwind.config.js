@@ -8,7 +8,9 @@ module.exports = {
       'primary': '#3490dc',
       'secondary': '#ffed4a',
       'danger': '#e3342f',
-      'bgx': '#1A1E1E'
+      'bgx': '#1A1E1E',
+      'tx': '#788C95',
+      'bgnav': '#293233'
      })
   },
   variants: {
