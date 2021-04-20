@@ -14,7 +14,8 @@ module.exports = {
       'danger': '#e3342f',
       'bgx': '#1A1E1E',
       'tx': '#788C95',
-      'bgnav': '#293233'
+      'bgnav': '#293233',
+      'modewhite': '#F5F5F5'
      }),
      boxShadow: {
       sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',

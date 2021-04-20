@@ -23,7 +23,7 @@ const Home = ({ token }) => {
     }
   };
 
-  return <Layout >index {token}</Layout>;
+  return <Layout >index</Layout>;
 };
 export default Home;
 
