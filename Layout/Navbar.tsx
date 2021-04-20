@@ -46,7 +46,7 @@ const Navbar = () => {
     </Menu>
   );
   return (
-    <div className="flex justify-between items-center bg-bgnav">
+    <div className="flex justify-between items-center  bg-white text-bgx dark:bg-bgnav dark:text-primary">
       <div className="pl-5  items-center justify-self-start flex-grow">
         <Image
           src="/logo-cut.png"
