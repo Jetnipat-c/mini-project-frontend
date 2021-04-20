@@ -23,10 +23,10 @@ export default (WarpComponent) => {
           //Router.push("/Home");
         } else {
           localStorage.removeItem("token");
-          Router.push("/Signin");
+          Router.push("/");
         }
       } else {
-        Router.push("/Signin");
+        Router.push("/");
       }
     };
     return (

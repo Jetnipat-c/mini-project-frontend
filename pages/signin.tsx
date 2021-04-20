@@ -5,10 +5,11 @@ import { Button, notification, Space } from "antd";
 import { UserStore } from "../store";
 const Signin = () => {
   const router = useRouter();
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [remember, setRemember] = useState<boolean>(false);
-  const { setToken } = UserStore()
+  const { setToken } = UserStore();
   const handleSignin = async (event) => {
     event.preventDefault();
     try {
@@ -21,8 +22,8 @@ const Signin = () => {
         },
         { withCredentials: true }
       );
-      localStorage.setItem("token",result.data.token)
-      setToken(result.data.token)
+      localStorage.setItem("token", result.data.token);
+      setToken(result.data.token);
       router.push("/");
     } catch (err) {
       openNotificationWithIcon("error");
@@ -36,6 +37,31 @@ const Signin = () => {
       message: "เข้าสู่ระบบผิดพลาด",
       description: "กรุณาตรวจสอบชื่อผู้ใช้งานหรือรหัสผู้ใช้งานให้ถูกต้อง",
     });
+  };
+  const guestUser = async () => {
+    try {
+      let result = await axios.get("http://localhost:6969/api/auth/guest")
+      //console.log(result.data);
+      try {
+        let resultSignin = await axios.post(
+          "http://localhost:6969/api/auth/login",
+          {
+            username: result.data.username,
+            password: "123456",
+            remember,
+          },
+          { withCredentials: true }
+        );
+        //localStorage.setItem("token", resultSignin.data.token);
+        //setToken(resultSignin.data.token);
+        router.push("/");
+      } catch (err) {
+        openNotificationWithIcon("error");
+      }
+    } catch (e) {
+      console.log(e);
+      alert("มีชื่อผู้ใช้งานนี้ในระบบแล้ว");
+    }
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -93,7 +119,7 @@ const Signin = () => {
               </a>
               <span className="pr-2">or</span>
               <a
-                href="/signup"
+                onClick={guestUser}
                 className="font-medium text-indigo-600 hover:text-indigo-500 ml-1"
               >
                 Guest user

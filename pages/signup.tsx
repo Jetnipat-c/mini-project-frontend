@@ -5,7 +5,6 @@ const Signup = () => {
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [age, setAge] = useState<number>();
   const [username, setUsername] = useState<string>("");
   const [status, setStatus] = useState("");
 
