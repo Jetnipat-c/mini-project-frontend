@@ -4,7 +4,9 @@ import { DownOutlined, MenuOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
+import { UserStore } from "../store";
 const Navbar = () => {
+  const { username } = UserStore()
   const [visible, setVisible] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -51,7 +53,7 @@ const Navbar = () => {
         />
       </div>
       <div className="pr-5">
-        <span className="pr-5 text-md text-primary font-semibold">username</span>
+        <span className="pr-5 text-md text-primary font-semibold">{username}</span>
         <Dropdown
           overlay={menu}
           onVisibleChange={handleVisibleChange}
