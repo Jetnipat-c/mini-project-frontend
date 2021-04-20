@@ -3,6 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Layout from "../Layout/layout";
 import { UserStore } from "../store";
+import LastTransaction from "../components/LastTransaction";
 const Home = ({ token }) => {
   
   //console.log("token index: ",token)
@@ -23,7 +24,7 @@ const Home = ({ token }) => {
     }
   };
 
-  return <Layout >index</Layout>;
+  return <Layout ><LastTransaction /></Layout>;
 };
 export default Home;
 
