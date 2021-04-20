@@ -6,7 +6,7 @@ import { UserStore } from "../store";
 const Home = ({ token }) => {
   
   
-  const { setUsername } = UserStore()
+  const { setUsername, setToken } = UserStore()
   useEffect(() => {
     profileUser();
   }, []);
@@ -20,6 +20,7 @@ const Home = ({ token }) => {
       // console.log('user: ', users.data)
       //setUser(users.data.username);
       setUsername(users.data.username)
+      setToken(token)
     } catch (e) {
       console.log(e);
     }

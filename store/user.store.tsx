@@ -7,9 +7,13 @@ type UserState = {
 
 export const UserStore = create<any>((set,get) => ({
     username: '',
-
-    setUsername: (username) => {
-        set(() => ({username: username}
+    token: '',
+    setUsername: (usernames) => {
+        set(() => ({username: usernames}
+        ))
+    },
+    setToken: (tokens) => {
+        set(() => ({token: tokens}
         ))
     }
 
