@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-
-export default function Layout({ children }) {
+const Layout = ({ children }) => {
   return (
-    <div className="">
+    <div>
       <Navbar />
       <div>{children}</div>
     </div>
   );
-}
+};
+export default Layout;

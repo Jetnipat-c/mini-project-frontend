@@ -3,13 +3,25 @@ import { Menu, Dropdown, Switch } from "antd";
 import { DownOutlined, MenuOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import axios from "axios";
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  
+  const [user, setUser] = useState();
   const { theme, setTheme } = useTheme();
   useEffect(() => {
     setIsMounted(true);
+    
+    profileUser();
   }, []);
+  const profileUser = async () => {
+    let token = (localStorage.getItem("token")); 
+    const users = await axios.get(`http://localhost:6969/api/auth/profile`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    setUser(users.data.username);
+  };
   const switchTheme = () => {
     if (isMounted) {
       setTheme(theme === "dark" ? "light" : "dark");
@@ -49,7 +61,7 @@ const Navbar = () => {
         />
       </div>
       <div className="pr-5">
-        <span className="pr-5 text-md text-primary font-semibold">username</span>
+        <span className="pr-5 text-md text-primary font-semibold">{user}</span>
         <Dropdown
           overlay={menu}
           onVisibleChange={handleVisibleChange}

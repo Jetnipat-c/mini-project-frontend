@@ -1,36 +1,37 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { Button, notification, Space } from 'antd';
+import { Button, notification, Space } from "antd";
 const Signin = () => {
   const router = useRouter();
   const [password, setPassword] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [remember, setRemember] = useState<boolean>(false);
-  console.log(remember);
   const handleSignin = async (event) => {
     event.preventDefault();
     try {
-      let result = await axios.post("http://localhost:6969/api/auth/login", {
-        username,
-        password,
-        remember,
-      });
-      alert(JSON.stringify(result.data, null, 4));
-      router.push("/")
+      let result = await axios.post(
+        "http://localhost:6969/api/auth/login",
+        {
+          username,
+          password,
+          remember,
+        },
+        { withCredentials: true }
+      );
+      localStorage.setItem("token",result.data.token)
+      router.push("/");
     } catch (err) {
-      //alert("Incorrect user or password.");
-      openNotificationWithIcon('error')
+      openNotificationWithIcon("error");
     }
   };
   const reMem = async () => {
     setRemember(!remember);
   };
-  const openNotificationWithIcon = type => {
+  const openNotificationWithIcon = (type) => {
     notification[type]({
-      message: 'เข้าสู่ระบบผิดพลาด',
-      description:
-        'กรุณาตรวจสอบชื่อผู้ใช้งานหรือรหัสผู้ใช้งานให้ถูกต้อง',
+      message: "เข้าสู่ระบบผิดพลาด",
+      description: "กรุณาตรวจสอบชื่อผู้ใช้งานหรือรหัสผู้ใช้งานให้ถูกต้อง",
     });
   };
   return (
