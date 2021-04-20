@@ -2,11 +2,13 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { Button, notification, Space } from "antd";
+import { UserStore } from "../store";
 const Signin = () => {
   const router = useRouter();
   const [password, setPassword] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [remember, setRemember] = useState<boolean>(false);
+  const { setToken } = UserStore()
   const handleSignin = async (event) => {
     event.preventDefault();
     try {
@@ -20,6 +22,7 @@ const Signin = () => {
         { withCredentials: true }
       );
       localStorage.setItem("token",result.data.token)
+      setToken(result.data.token)
       router.push("/");
     } catch (err) {
       openNotificationWithIcon("error");

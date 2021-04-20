@@ -5,8 +5,8 @@ import Layout from "../Layout/layout";
 import { UserStore } from "../store";
 const Home = ({ token }) => {
   
-  
-  const { setUsername, setToken } = UserStore()
+  //console.log("token index: ",token)
+  const { setUsername } = UserStore()
   useEffect(() => {
     profileUser();
   }, []);
@@ -17,16 +17,13 @@ const Home = ({ token }) => {
       const users = await axios.get(`http://localhost:6969/api/auth/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      // console.log('user: ', users.data)
-      //setUser(users.data.username);
       setUsername(users.data.username)
-      setToken(token)
     } catch (e) {
       console.log(e);
     }
   };
 
-  return <Layout >index</Layout>;
+  return <Layout >index {token}</Layout>;
 };
 export default Home;
 

@@ -8,13 +8,15 @@ type UserState = {
 export const UserStore = create<any>((set,get) => ({
     username: '',
     token: '',
-    setUsername: (usernames) => {
+    setUsername: (usernames: string) => {
         set(() => ({username: usernames}
         ))
     },
-    setToken: (tokens) => {
+    setToken: (tokens : string) => {
+        console.log(tokens)
         set(() => ({token: tokens}
         ))
+    
     }
 
     

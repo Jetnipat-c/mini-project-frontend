@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 import { UserStore } from "../store";
+import Router from "next/router";
 const Navbar = () => {
-  const { username } = UserStore()
+  const { username, token } = UserStore();
   const [visible, setVisible] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -30,7 +31,9 @@ const Navbar = () => {
   const menu = (
     <Menu onClick={handleMenuClick}>
       <Menu.Item key="1">หน้าหลัก</Menu.Item>
-      <Menu.Item key="2">จัดการบัญชี</Menu.Item>
+      <Menu.Item key="2" onClick={() => Router.push("/admin")}>
+        จัดการบัญชี
+      </Menu.Item>
       <Menu.Item key="3">ออกจากระบบ</Menu.Item>
       <Menu.Item key="4">
         <Switch
@@ -53,7 +56,9 @@ const Navbar = () => {
         />
       </div>
       <div className="pr-5">
-        <span className="pr-5 text-md text-primary font-semibold">{username}</span>
+        <span className="pr-5 text-md text-primary font-semibold">
+          {username}
+        </span>
         <Dropdown
           overlay={menu}
           onVisibleChange={handleVisibleChange}
