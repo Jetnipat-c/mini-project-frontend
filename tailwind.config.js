@@ -9,6 +9,8 @@ module.exports = {
       white: "#FFFFFF",
       gray: "#F5F5F5",
       title: "#788C95",
+      green: "#1BA629",
+      red: "#FF0000",
     },
     backgroundColor: (theme) => ({
       ...theme("colors"),

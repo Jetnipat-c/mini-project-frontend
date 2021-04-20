@@ -1,25 +1,27 @@
+import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
+import { Divider } from 'antd';
 const LastTransaction = () => {
   const data = [
     {
       userID: 1,
       tranDate: "4/19/2021",
       tranNote: "ปลาป๋อง",
-      tranType: "EXPENDITURE",
-      tranAmount: 40,
+      tranType: false,
+      tranAmount: 40.0,
       tranID: 2,
     },
     {
       userID: 1,
       tranDate: "5/27/2021",
-      tranNote: "กับข้าวครับกับข้าว",
-      tranType: "REVENUE",
-      tranAmount: 90,
+      tranNote: "ค่ากับข้าวครับกับข้าว",
+      tranType: true,
+      tranAmount: 90.5,
       tranID: 2,
     },
   ];
   return (
     <div className="p-5">
-      <div className="grid grid-cols-3 gap-4 max-w-screen-sm bg-white text-primary dark:bg-bgnav dark:text-primary ">
+      <div className="grid grid-cols-3  max-w-screen-sm bg-white text-primary dark:bg-bgnav dark:text-primary ">
         <div className="col-start-1 col-span-3 m-3 text-4xl font-bold ">
           Lastes <br />
           Transaction
@@ -32,17 +34,41 @@ const LastTransaction = () => {
         {data.map((item, index) => {
           return (
             <div
-              className="grid grid-cols-3 gap-4 max-w-screen-sm bg-white text-title dark:bg-bgnav dark:text-primary "
+              className="grid grid-cols-3 border-b-2 border-fuchsia-600 max-w-screen-sm bg-white text-title dark:bg-bgnav dark:text-primary "
               key={index}
             >
               {/* <div className="col-start-1 col-span-3 m-3 m-3"></div> */}
-              <div className="col-start-1 col-end-2 m-3">{item.tranDate}</div>
+              <div className="col-start-1 col-end-2 m-3 ">{item.tranDate}</div>
               <div className="col-start-2 col-end-3 m-3">
-                <div>{item.tranNote}</div>
-                <div>{item.tranType}</div>
+                <div className="text-black">{item.tranNote}</div>
+                <div>
+                  {item.tranType ? (
+                    <div>
+                      <ArrowLeftOutlined />
+                      <span className="pl-1">expenditure</span>
+                    </div>
+                  ) : (
+                    <div>
+                      <ArrowRightOutlined />
+                      <span className="pl-1">revenue</span>
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className="col-start-3 col-end-4 m-3">{item.tranAmount}</div>
+              <div className="col-start-3 col-end-4 m-3">
+                {item.tranType ? (
+                  <div>
+                    <span className="text-green">+ ฿{item.tranAmount}</span>
+                  </div>
+                ) : (
+                  <div>
+                    <span className="text-red">- ฿{item.tranAmount}</span>
+                  </div>
+                )}
+              </div>
+              
             </div>
+            
           );
         })}
       </div>
