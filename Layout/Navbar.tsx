@@ -27,14 +27,26 @@ const Navbar = () => {
   const handleVisibleChange = (flag) => {
     setVisible(flag);
   };
+  const logout = async () => {
+    let result = await axios
+      .get("http://localhost:6969/api/auth/logout", { withCredentials: true })
+      .then(() => {
+        Router.push("/signin");
+      }).catch ((e)=> {
+        console.log(e)
+      }) 
+    //console.log(result);
+  };
 
   const menu = (
     <Menu onClick={handleMenuClick}>
-      <Menu.Item key="1">หน้าหลัก</Menu.Item>
+      <Menu.Item key="1" onClick={() => Router.push("/")}>หน้าหลัก</Menu.Item>
       <Menu.Item key="2" onClick={() => Router.push("/admin")}>
         จัดการบัญชี
       </Menu.Item>
-      <Menu.Item key="3">ออกจากระบบ</Menu.Item>
+      <Menu.Item key="3" onClick={logout}>
+        ออกจากระบบ
+      </Menu.Item>
       <Menu.Item key="4">
         <Switch
           checkedChildren={theme}
