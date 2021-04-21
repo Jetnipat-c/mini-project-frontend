@@ -41,7 +41,7 @@ const CreateTransaction = () => {
           <TextArea rows={4} />
         </div>
         <div className="col-start-3 col-end-4 m-3">
-          <Input placeholder="60" />
+          <Input type="number" placeholder="60" />
         </div>
       </div>
       <div className="grid grid-cols-2 max-w-screen-sm bg-white text-title dark:bg-bgnav dark:text-primary pt-2 text-center pb-2">
