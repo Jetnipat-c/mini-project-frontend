@@ -6,9 +6,8 @@ import { UserStore } from "../store";
 import LastTransaction from "../components/LastTransaction";
 import CreateTransaction from "../components/CreateTransaction";
 const Home = ({ token }) => {
-  
   //console.log("token index: ",token)
-  const { setUsername } = UserStore()
+  const { setUsername } = UserStore();
   useEffect(() => {
     profileUser();
   }, []);
@@ -19,13 +18,24 @@ const Home = ({ token }) => {
       const users = await axios.get(`http://localhost:6969/api/auth/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setUsername(users.data.username)
+      setUsername(users.data.username);
     } catch (e) {
       console.log(e);
     }
   };
 
-  return <Layout ><LastTransaction /><CreateTransaction /></Layout>;
+  return (
+    <Layout>
+      <div className="flex justify-around flex-wrap">
+        <div className="">
+          <LastTransaction />
+        </div>
+        <div className="">
+          <CreateTransaction />
+        </div>
+      </div>
+    </Layout>
+  );
 };
 export default Home;
 
