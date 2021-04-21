@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Layout from "../Layout/layout";
 import { UserStore } from "../store";
 import LastTransaction from "../components/LastTransaction";
+import CreateTransaction from "../components/CreateTransaction";
 const Home = ({ token }) => {
   
   //console.log("token index: ",token)
@@ -24,7 +25,7 @@ const Home = ({ token }) => {
     }
   };
 
-  return <Layout ><LastTransaction /></Layout>;
+  return <Layout ><LastTransaction /><CreateTransaction /></Layout>;
 };
 export default Home;
 

@@ -1,6 +1,15 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
-import { Divider } from 'antd';
+import { Pagination } from "antd";
+import { useState } from "react";
 const LastTransaction = () => {
+  const [current, setCurrent] = useState(1);
+  const onChange = (page) => {
+    console.log(page);
+    setCurrent(page);
+  };
+  function onShowSizeChange(current, pageSize) {
+    console.log(current, pageSize);
+  }
   const data = [
     {
       userID: 1,
@@ -8,6 +17,70 @@ const LastTransaction = () => {
       tranNote: "ปลาป๋อง",
       tranType: false,
       tranAmount: 40.0,
+      tranID: 2,
+    },
+    {
+      userID: 1,
+      tranDate: "5/27/2021",
+      tranNote: "ค่ากับข้าวครับกับข้าว",
+      tranType: true,
+      tranAmount: 90.5,
+      tranID: 2,
+    },
+    {
+      userID: 1,
+      tranDate: "5/27/2021",
+      tranNote: "ค่ากับข้าวครับกับข้าว",
+      tranType: true,
+      tranAmount: 90.5,
+      tranID: 2,
+    },
+    {
+      userID: 1,
+      tranDate: "5/27/2021",
+      tranNote: "ค่ากับข้าวครับกับข้าว",
+      tranType: true,
+      tranAmount: 90.5,
+      tranID: 2,
+    },
+    {
+      userID: 1,
+      tranDate: "4/19/2021",
+      tranNote: "ปลาป๋อง",
+      tranType: false,
+      tranAmount: 40.0,
+      tranID: 2,
+    },
+    {
+      userID: 1,
+      tranDate: "4/19/2021",
+      tranNote: "ปลาป๋อง",
+      tranType: false,
+      tranAmount: 40.0,
+      tranID: 2,
+    },
+    {
+      userID: 1,
+      tranDate: "4/19/2021",
+      tranNote: "ปลาป๋อง",
+      tranType: false,
+      tranAmount: 40.0,
+      tranID: 2,
+    },
+    {
+      userID: 1,
+      tranDate: "5/27/2021",
+      tranNote: "ค่ากับข้าวครับกับข้าว",
+      tranType: true,
+      tranAmount: 90.5,
+      tranID: 2,
+    },
+    {
+      userID: 1,
+      tranDate: "5/27/2021",
+      tranNote: "ค่ากับข้าวครับกับข้าว",
+      tranType: true,
+      tranAmount: 90.5,
       tranID: 2,
     },
     {
@@ -66,11 +139,20 @@ const LastTransaction = () => {
                   </div>
                 )}
               </div>
-              
             </div>
-            
           );
         })}
+      </div>
+      <div className="grid grid-cols-3  max-w-screen-sm bg-white text-primary dark:bg-bgnav dark:text-primary ">
+        <div className="col-start-1 col-span-3 m-3 text-4xl font-bold ml-8 md:mx-44">
+          <Pagination
+            current={1}
+            defaultCurrent={1}
+            onChange={onShowSizeChange}
+            total={50}
+            className=""
+          />
+        </div>
       </div>
     </div>
   );
