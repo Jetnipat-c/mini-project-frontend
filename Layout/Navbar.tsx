@@ -81,7 +81,7 @@ const Navbar = () => {
           </a>
         </Dropdown>
       </div>
-      <div className="pr-5"></div>
+      
     </div>
   );
 };
