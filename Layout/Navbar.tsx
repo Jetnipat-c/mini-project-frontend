@@ -28,6 +28,7 @@ const Navbar = () => {
     setVisible(flag);
   };
   const logout = async () => {
+    localStorage.removeItem('token')
     let result = await axios
       .get("http://localhost:6969/api/auth/logout", { withCredentials: true })
       .then(() => {

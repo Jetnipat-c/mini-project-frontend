@@ -5,6 +5,7 @@ import Layout from "../Layout/layout";
 import { UserStore } from "../store";
 import LastTransaction from "../components/LastTransaction";
 import CreateTransaction from "../components/CreateTransaction";
+import withAuth from "../Layout/withAuth";
 const Home = ({ token }) => {
   //console.log("token index: ",token)
   const { setUsername } = UserStore();
@@ -37,7 +38,7 @@ const Home = ({ token }) => {
     </Layout>
   );
 };
-export default Home;
+export default withAuth(Home);
 
 export function getServerSideProps({ req, res }) {
   return { props: { token: req.cookies.token || "" } };
