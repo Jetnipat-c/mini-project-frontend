@@ -3,9 +3,7 @@ import { Pagination } from "antd";
 import { UserStore } from "../store";
 import { useEffect, useState } from "react";
 import axios from "axios";
-const LastTransaction = ({token}) => {
- 
-  
+const LastTransaction = ({ token }) => {
   const [current, setCurrent] = useState(1);
   const onChange = (page) => {
     console.log(page);
@@ -14,10 +12,6 @@ const LastTransaction = ({token}) => {
   function onShowSizeChange(current, pageSize) {
     console.log(current, pageSize);
   }
-
-
-  const { setUsername } = UserStore();
-
   const [data, setData] = useState([]);
   console.log("data : ", data);
 
@@ -32,7 +26,6 @@ const LastTransaction = ({token}) => {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (users) {
-        setUsername(users.data.username);
         console.log(users.data.id);
         await getTransactions(users.data.id);
       }
