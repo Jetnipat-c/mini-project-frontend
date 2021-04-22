@@ -1,7 +1,11 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import { Pagination } from "antd";
-import { useState } from "react";
-const LastTransaction = () => {
+import { UserStore } from "../store";
+import { useEffect, useState } from "react";
+import axios from "axios";
+const LastTransaction = ({token}) => {
+ 
+  
   const [current, setCurrent] = useState(1);
   const onChange = (page) => {
     console.log(page);
@@ -10,88 +14,45 @@ const LastTransaction = () => {
   function onShowSizeChange(current, pageSize) {
     console.log(current, pageSize);
   }
-  const data = [
-    {
-      userID: 1,
-      tranDate: "4/19/2021",
-      tranNote: "ปลาป๋อง",
-      tranType: false,
-      tranAmount: 40.0,
-      tranID: 2,
-    },
-    {
-      userID: 1,
-      tranDate: "5/27/2021",
-      tranNote: "ค่ากับข้าวครับกับข้าว",
-      tranType: true,
-      tranAmount: 90.5,
-      tranID: 2,
-    },
-    {
-      userID: 1,
-      tranDate: "5/27/2021",
-      tranNote: "ค่ากับข้าวครับกับข้าว",
-      tranType: true,
-      tranAmount: 90.5,
-      tranID: 2,
-    },
-    {
-      userID: 1,
-      tranDate: "5/27/2021",
-      tranNote: "ค่ากับข้าวครับกับข้าว",
-      tranType: true,
-      tranAmount: 90.5,
-      tranID: 2,
-    },
-    {
-      userID: 1,
-      tranDate: "4/19/2021",
-      tranNote: "ปลาป๋อง",
-      tranType: false,
-      tranAmount: 40.0,
-      tranID: 2,
-    },
-    {
-      userID: 1,
-      tranDate: "4/19/2021",
-      tranNote: "ปลาป๋อง",
-      tranType: false,
-      tranAmount: 40.0,
-      tranID: 2,
-    },
-    {
-      userID: 1,
-      tranDate: "4/19/2021",
-      tranNote: "ปลาป๋อง",
-      tranType: false,
-      tranAmount: 40.0,
-      tranID: 2,
-    },
-    {
-      userID: 1,
-      tranDate: "5/27/2021",
-      tranNote: "ค่ากับข้าวครับกับข้าว",
-      tranType: true,
-      tranAmount: 90.5,
-      tranID: 2,
-    },
-    {
-      userID: 1,
-      tranDate: "5/27/2021",
-      tranNote: "ค่ากับข้าวครับกับข้าว",
-      tranType: true,
-      tranAmount: 90.5,
-      tranID: 2,
-    },
-    {
-      userID: 1,
-      tranDate: "5/27/2021",
-      tranNote: "ค่ากับข้าวครับกับข้าว",
-      tranType: true,
-      tranAmount: 90.5,
-      tranID: 2,
-    },
-  ];
+
+
+  const { setUsername } = UserStore();
+
+  const [data, setData] = useState([]);
+  console.log("data : ", data);
+
+  useEffect(() => {
+    profileUser();
+  }, []);
+
+  const profileUser = async () => {
+    try {
+      // console.log('token: ', token)
+      const users = await axios.get(`http://localhost:6969/api/auth/profile`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (users) {
+        setUsername(users.data.username);
+        console.log(users.data.id);
+        await getTransactions(users.data.id);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getTransactions = async (id) => {
+    try {
+      const transaction = await axios.get(
+        `http://localhost:6969/api/transaction/byuser/${id}`
+      );
+      console.log(transaction.data);
+      setData(transaction.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div className="p-5">
       <div className="grid grid-cols-3  max-w-screen-sm bg-white text-primary dark:bg-bgnav dark:text-primary rounded-t-lg">
