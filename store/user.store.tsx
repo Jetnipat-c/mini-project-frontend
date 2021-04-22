@@ -1,11 +1,7 @@
 import create from 'zustand'
+import { StoreUser } from './types/user.type'
 
-type UserState = {
-    username: string;
-    setUername: (username: string) => void;
-}
-
-export const UserStore = create<any>((set,get) => ({
+export const UserStore = create<StoreUser>((set,get) => ({
     username: '',
     token: '',
     setUsername: (usernames: string) => {

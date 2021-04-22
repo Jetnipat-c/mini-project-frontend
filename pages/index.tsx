@@ -24,5 +24,5 @@ const Home = ({ token }) => {
 export default withAuth(Home);
 
 export function getServerSideProps({ req, res }) {
-  return { props: { token: req.cookies.token || "" } };
+  return { props: { token: req.cookies.token || "" , frame:"555"} };
 }
