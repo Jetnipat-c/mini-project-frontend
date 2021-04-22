@@ -5,7 +5,7 @@ import moment from "moment-timezone";
 
 const { TextArea } = Input;
 
-const CreateTransaction = () => {
+const ManageTransaction = () => {
   const [date, setDate] = useState("");
   function onChange(date, dateString) {
     console.log(date, dateString);
@@ -35,19 +35,19 @@ const CreateTransaction = () => {
           <Input type="number" placeholder="60" />
         </div>
       </div>
-      <div className="grid grid-cols-2 max-w-screen-sm bg-white text-title dark:bg-bgnav dark:text-primary pt-2 text-center pb-2 rounded-b-lg">
+      <div className="grid grid-cols-2 max-w-screen-sm bg-white text-title dark:bg-bgnav dark:text-primary pt-2 text-center  pb-2 rounded-b-lg">
         <div className="">
           <Button type="primary" icon={<ArrowRightOutlined />}>
-            รายรับ
+            แก้ไข
           </Button>
         </div>
         <div className="">
           <Button type="primary" danger icon={<ArrowLeftOutlined />}>
-            รายจ่าย
+            ลบ
           </Button>
         </div>
       </div>
     </div>
   );
 };
-export default CreateTransaction;
+export default ManageTransaction;

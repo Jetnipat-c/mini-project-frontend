@@ -4,7 +4,7 @@ import { UserStore } from "../store";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import GetTransaction from "../components/GetTransaction";
-import CreateTransaction from "../components/CreateTransaction";
+import ManageTransaction from "../components/ManageTransaction";
 const Admin = ({ token }) => {
   const { setUsername } = UserStore();
   useEffect(() => {
@@ -30,7 +30,7 @@ const Admin = ({ token }) => {
             <GetTransaction />
           </div>
           <div className="">
-            <CreateTransaction />
+            <ManageTransaction />
           </div>
         </div>
       </Layout>
