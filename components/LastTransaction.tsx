@@ -94,7 +94,7 @@ const LastTransaction = () => {
   ];
   return (
     <div className="p-5">
-      <div className="grid grid-cols-3  max-w-screen-sm bg-white text-primary dark:bg-bgnav dark:text-primary ">
+      <div className="grid grid-cols-3  max-w-screen-sm bg-white text-primary dark:bg-bgnav dark:text-primary rounded-t-lg">
         <div className="col-start-1 col-span-3 m-3 text-4xl font-bold ">
           Lastes <br />
           Transaction
@@ -143,7 +143,7 @@ const LastTransaction = () => {
           );
         })}
       </div>
-      <div className="grid grid-cols-3  max-w-screen-sm bg-white text-primary dark:bg-bgnav dark:text-primary ">
+      <div className="grid grid-cols-3 rounded-b-lg  max-w-screen-sm bg-white text-primary dark:bg-bgnav dark:text-primary ">
         <div className="col-start-1 col-span-3 m-3 text-4xl font-bold ml-8 md:mx-44">
           <Pagination
             current={1}
