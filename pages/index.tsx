@@ -9,6 +9,10 @@ import withAuth from "../Layout/withAuth";
 const Home = ({ token }) => {
   //console.log("token index: ",token)
   const { setUsername } = UserStore();
+
+  const [data, setData] = useState();
+  console.log("data : ", data);
+
   useEffect(() => {
     profileUser();
   }, []);
@@ -19,7 +23,23 @@ const Home = ({ token }) => {
       const users = await axios.get(`http://localhost:6969/api/auth/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setUsername(users.data.username);
+      if (users) {
+        setUsername(users.data.username);
+        console.log(users.data.id);
+        await getTransactions(users.data.id);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getTransactions = async (id) => {
+    try {
+      const transaction = await axios.get(
+        `http://localhost:6969/api/transaction/byuser/${id}`
+      );
+      console.log(transaction.data);
+      setData(transaction.data);
     } catch (e) {
       console.log(e);
     }

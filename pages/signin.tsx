@@ -52,7 +52,7 @@ const Signin = () => {
           },
           { withCredentials: true }
         );
-        //localStorage.setItem("token", resultSignin.data.token);
+        localStorage.setItem("token", resultSignin.data.token);
         //setToken(resultSignin.data.token);
         router.push("/");
       } catch (err) {
