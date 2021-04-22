@@ -4,16 +4,17 @@ import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { UserStore } from "../store";
 import axios from "axios";
+import { useCookie } from "next-cookie";
 
 export default (WarpComponent) => {
   const withAuth = (props) => {
     const [isAuthen, setIsAuthen] = useState(false);
+    const [token, setToken] = useState<string>(props?.token || '');
     const antIcon = <LoadingOutlined style={{ fontSize: 45 }} spin />;
     useEffect(() => {
-      checkAuthentication();
+      checkAuthentication(token);
     }, []);
-    const checkAuthentication = async () => {
-      let token = await localStorage.getItem("token");
+    const checkAuthentication = async (token) => {
       if (token) {
         let res = await axios.get(`http://localhost:6969/api/auth/profile`, {
           headers: { Authorization: `Bearer ${token}` },
@@ -35,11 +36,9 @@ export default (WarpComponent) => {
           <div className="text-white">
             <WarpComponent {...props} />
           </div>
-          
         ) : (
           <div className="text-center h-screen">
             <Spin indicator={antIcon} />
-            
           </div>
         )}
       </>
