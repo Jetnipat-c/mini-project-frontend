@@ -59,7 +59,7 @@ const Navbar = () => {
   );
   return (
     <div className="flex justify-between items-center  bg-white text-bgx dark:bg-bgnav dark:text-primary">
-      <div className="pl-5  items-center justify-self-start flex-grow">
+      <div className="pl-7  items-center justify-self-start flex-grow">
         <Image
           src="/logo-cut.png"
           alt="Picture of the logo"
@@ -67,7 +67,7 @@ const Navbar = () => {
           height={50}
         />
       </div>
-      <div className="pr-5">
+      <div className="pr-7">
         <span className="pr-5 text-md text-primary font-semibold">
           {username}
         </span>
