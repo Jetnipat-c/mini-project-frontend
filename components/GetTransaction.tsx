@@ -66,8 +66,7 @@ const GetTransaction = ({token}) => {
               className="grid grid-cols-4 border-b-2 border-fuchsia-600 max-w-screen-sm bg-white text-title dark:bg-bgnav dark:text-primary "
               key={index}
             >
-              {/* <div className="col-start-1 col-span-3 m-3 m-3"></div> */}
-              <div className="col-start-1 col-end-2 m-3 ">{item.tranDate}</div>
+              <div className="col-start-1 col-end-2 m-3">{item.tranDate}</div>
               <div className="col-start-2 col-end-3 m-3">
                 <div className="text-black">{item.tranNote}</div>
                 <div>
@@ -95,7 +94,7 @@ const GetTransaction = ({token}) => {
                   </div>
                 )}
               </div>
-              <div className="col-start-4 col-end-5 m-3">
+              <div className="col-start-4 col-end-5 m-3 ">
                   <div><Button onClick={()=>getTransaction(item.tranID)} size="small" style={{marginTop: "7px", width: "60px", backgroundColor: "#788C95", color: "#fff", border: "none"}}>เลือก</Button></div>
               </div>
             </div>
