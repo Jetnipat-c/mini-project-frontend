@@ -6,15 +6,14 @@ import axios from "axios";
 import GetTransaction from "../components/GetTransaction";
 import ManageTransaction from "../components/ManageTransaction";
 const Admin = ({ token }) => {
-  
   return (
     <div className="">
       <Layout>
-        <div className="flex justify-around flex-wrap">
-          <div className="">
+        <div className="grid grid-cols-1 md:grid-cols-2  w-full text-center">
+          <div className="flex justify-center w-full">
             <GetTransaction token={token}/>
           </div>
-          <div className="">
+          <div className="flex justify-center w-full">
             <ManageTransaction />
           </div>
         </div>

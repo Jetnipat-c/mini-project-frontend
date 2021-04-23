@@ -64,7 +64,6 @@ const LastTransaction = ({ token }) => {
               className="grid grid-cols-3 border-b-2 border-fuchsia-600 max-w-screen-sm bg-white text-title dark:bg-bgnav dark:text-primary "
               key={index}
             >
-              {/* <div className="col-start-1 col-span-3 m-3 m-3"></div> */}
               <div className="col-start-1 col-end-2 m-3 ">{item.tranDate}</div>
               <div className="col-start-2 col-end-3 m-3">
                 <div className="text-black">{item.tranNote}</div>
@@ -97,13 +96,13 @@ const LastTransaction = ({ token }) => {
           );
         })}
       </div>
-      <div className="grid grid-cols-3 rounded-b-lg  max-w-screen-sm bg-white text-primary dark:bg-bgnav dark:text-primary ">
-        <div className="col-start-1 col-span-3 m-3 text-4xl font-bold ml-8 md:mx-44">
+      <div className="grid grid-cols-1 rounded-b-lg  bg-white text-primary dark:bg-bgnav dark:text-primary ">
+        <div className="m-3 text-2xl mx-0 md:mx-44">
           <Pagination
             current={1}
             defaultCurrent={1}
             onChange={onShowSizeChange}
-            total={50}
+            total={40}
             className=""
           />
         </div>

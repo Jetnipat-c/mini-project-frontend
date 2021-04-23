@@ -22,11 +22,11 @@ const CreateTransaction = () => {
   }
 
   const handleClickBtn = async (choice: boolean) => {
-    console.log(choice);
+    //console.log(choice);
     //setTranType(e);
     let userID = id;
-    //console.log("Data : ", userID, tranDate, tranNote, tranAmount, tranType);
-    if (!tranDate || !tranNote || !tranAmount || !choice || !id) {
+    console.log("Data : ", userID, tranDate, tranNote, tranAmount, choice);
+    if (!tranDate || !tranNote || !tranAmount || !id) {
       alert("กรุณากรอกข้อมูลให้ครบ");
     } else {
       try {
@@ -41,6 +41,9 @@ const CreateTransaction = () => {
           }
         );
         console.log(result.data);
+        setTranAmount(0)
+        setTranDate('')
+        setTranNote('')
         router.reload();
       } catch (e) {
         console.log(e);
@@ -52,7 +55,7 @@ const CreateTransaction = () => {
   return (
     <div className="p-5 ">
       <div className="grid grid-cols-3 px-2 gap-3 max-w-screen-sm bg-white text-primary dark:bg-bgnav dark:text-primary rounded-t-lg">
-        <div className="col-start-1 col-span-3  text-4xl font-bold text-yellow-500">
+        <div className="col-start-1 col-span-3  text-4xl font-bold">
           Create <br />
           Transaction
         </div>

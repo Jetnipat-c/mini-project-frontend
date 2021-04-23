@@ -50,8 +50,8 @@ const GetTransaction = ({token}) => {
   };
   return (
     <div className="p-5">
-      <div className="grid grid-cols-4  max-w-screen-sm bg-white text-primary dark:bg-bgnav dark:text-primary rounded-t-lg">
-        <div className="col-start-1 col-span-3 m-3 text-4xl font-bold ">
+       <div className="grid grid-cols-4  max-w-screen-sm bg-white text-primary dark:bg-bgnav dark:text-primary rounded-t-lg">
+        <div className="col-start-1 col-span-4 m-3 text-4xl font-bold ">
           Lastes <br />
           Transaction
         </div>
@@ -95,19 +95,19 @@ const GetTransaction = ({token}) => {
                 )}
               </div>
               <div className="col-start-4 col-end-5 m-3 ">
-                  <div><Button onClick={()=>getTransaction(item.tranID)} size="small" style={{marginTop: "7px", width: "60px", backgroundColor: "#788C95", color: "#fff", border: "none"}}>เลือก</Button></div>
+                  <div><Button onClick={()=>getTransaction(item.tranID)} size="small" style={{marginTop: "7px", maxWidth: "50px", backgroundColor: "#788C95", color: "#fff", border: "none"}}>เลือก</Button></div>
               </div>
             </div>
           );
         })}
       </div>
-      <div className="grid grid-cols-3 rounded-b-lg max-w-screen-sm bg-white text-primary dark:bg-bgnav dark:text-primary ">
-        <div className="col-start-1 col-span-3 m-3 text-4xl font-bold ml-8 md:mx-44">
+      <div className="grid grid-cols-1 rounded-b-lg  bg-white text-primary dark:bg-bgnav dark:text-primary ">
+        <div className="m-3 text-2xl mx-0 md:mx-44">
           <Pagination
             current={1}
             defaultCurrent={1}
             onChange={onShowSizeChange}
-            total={50}
+            total={40}
             className=""
           />
         </div>
