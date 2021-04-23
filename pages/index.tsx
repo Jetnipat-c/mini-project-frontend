@@ -7,14 +7,13 @@ import LastTransaction from "../components/LastTransaction";
 import CreateTransaction from "../components/CreateTransaction";
 import withAuth from "../Layout/withAuth";
 const Home = ({ token }) => {
-
   return (
     <Layout>
-      <div className="flex justify-around flex-wrap">
-        <div className="">
-          <LastTransaction token={token}/>
+      <div className="grid grid-cols-1 md:grid-cols-2  w-full text-center">
+        <div className="flex justify-center w-full">
+          <LastTransaction token={token} />
         </div>
-        <div className="">
+        <div className="flex justify-center w-full">
           <CreateTransaction />
         </div>
       </div>
@@ -24,5 +23,5 @@ const Home = ({ token }) => {
 export default withAuth(Home);
 
 export function getServerSideProps({ req, res }) {
-  return { props: { token: req.cookies.token || "" , frame:"555"} };
+  return { props: { token: req.cookies.token || "", frame: "555" } };
 }

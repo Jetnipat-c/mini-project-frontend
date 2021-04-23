@@ -6,7 +6,7 @@ import axios from "axios";
 import GetTransaction from "../components/GetTransaction";
 import ManageTransaction from "../components/ManageTransaction";
 const Admin = ({ token }) => {
-
+  
   return (
     <div className="">
       <Layout>

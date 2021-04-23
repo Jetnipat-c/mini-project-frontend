@@ -7,6 +7,7 @@ import axios from "axios";
 
 export default (WarpComponent) => {
   const withAuth = (props) => {
+    const { id, setId } = UserStore();
     const [isAuthen, setIsAuthen] = useState(false);
     const [token, setToken] = useState<string>(props?.token || '');
     const antIcon = <LoadingOutlined style={{ fontSize: 45 }} spin />;
@@ -20,6 +21,7 @@ export default (WarpComponent) => {
         });
         if (res && res.status === 200) {
           setIsAuthen(true);
+          setId(res.data.id)
           //Router.push("/Home");
         } else {
           localStorage.removeItem("token");

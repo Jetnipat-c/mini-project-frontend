@@ -7,8 +7,8 @@ const error404 = () => {
     }
     return <Result
     status="404"
-    title="404"
-    subTitle="Sorry, the page you visited does not exist."
+    title={<div className="text-white">404</div>}
+    subTitle={<div className="text-white">Sorry, the page you visited does not exist.</div>}
     extra={<Button type="primary" onClick={handleClick}>Back Home</Button>}
   />
 }
