@@ -6,10 +6,21 @@ import moment from "moment-timezone";
 const { TextArea } = Input;
 
 const CreateTransaction = () => {
-  const [date, setDate] = useState("");
+  const [tranNote,setTranNote] = useState<string>("")
+  const [tranDate, setTranDate] = useState<string>("");
+  const [tranAmount, setTranAmount] = useState<number>();
+  const [tranType, setTranType] = useState<boolean>();
+  
   function onChange(date, dateString) {
     console.log(date, dateString);
+    setTranDate(dateString)
   }
+
+  const handleClickBtn = async (e: boolean) => {
+    console.log(e);
+ 
+  }
+
   moment.tz.setDefault("America/Los_Angeles");
   return (
     <div className="p-5">
@@ -29,20 +40,20 @@ const CreateTransaction = () => {
           <DatePicker format="YYYY-MM-D" onChange={onChange} />
         </div>
         <div className="col-start-2 col-end-3 m-3">
-          <TextArea rows={4} />
+          <TextArea rows={4} onChange={(e) => setTranNote(e.target.value)}/>
         </div>
         <div className="col-start-3 col-end-4 m-3">
-          <Input type="number" placeholder="60" />
+          <Input type="number" placeholder="60" onChange={(e) => setTranAmount(parseFloat(e.target.value))}/>
         </div>
       </div>
       <div className="grid grid-cols-2 max-w-screen-sm bg-white text-title dark:bg-bgnav dark:text-primary pt-2 text-center pb-2 rounded-b-lg">
         <div className="">
-          <Button type="primary" icon={<ArrowRightOutlined />}>
+          <Button type="primary" icon={<ArrowRightOutlined />}  onClick={()=>handleClickBtn(true)} >
             รายรับ
           </Button>
         </div>
         <div className="">
-          <Button type="primary" danger icon={<ArrowLeftOutlined />}>
+          <Button type="primary" danger icon={<ArrowLeftOutlined />}  onClick={()=>handleClickBtn(false)} >
             รายจ่าย
           </Button>
         </div>

@@ -4,7 +4,6 @@ import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { UserStore } from "../store";
 import axios from "axios";
-import { useCookie } from "next-cookie";
 
 export default (WarpComponent) => {
   const withAuth = (props) => {
