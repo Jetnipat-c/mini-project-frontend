@@ -2,10 +2,15 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import { Pagination, Button } from "antd";
 import { useEffect,useState } from "react";
 import axios from "axios";
+import { TransactionStore } from "../store";
+
 const GetTransaction = ({token}) => {
-  
-  const getTransaction = (id) => {
-      console.log(id)
+  const [id,setId] = useState()
+  const {setTransaction} = TransactionStore();
+
+  const getTransactionforSet = (tranID,tranDate,tranNote,tranType,tranAmount) => {
+      //console.log(id,tranID,tranDate,tranNote,tranType,tranAmount)
+      setTransaction(id,tranID,tranDate,tranNote,tranType,tranAmount)
   }
   const [current, setCurrent] = useState(1);
   const onChange = (page) => {
@@ -30,7 +35,9 @@ const GetTransaction = ({token}) => {
       });
       if (users) {
         console.log(users.data.id);
+        setId(users.data.id)
         await getTransactions(users.data.id);
+        
       }
     } catch (e) {
       console.log(e);
@@ -95,7 +102,7 @@ const GetTransaction = ({token}) => {
                 )}
               </div>
               <div className="col-start-4 col-end-5 m-3 ">
-                  <div><Button onClick={()=>getTransaction(item.tranID)} size="small" style={{marginTop: "7px", maxWidth: "50px", backgroundColor: "#788C95", color: "#fff", border: "none"}}>เลือก</Button></div>
+                  <div><Button onClick={()=>getTransactionforSet(item.tranID,item.tranDate,item.tranNote,item.tranType,item.tranAmount)} size="small" style={{marginTop: "7px", maxWidth: "50px", backgroundColor: "#788C95", color: "#fff", border: "none"}}>เลือก</Button></div>
               </div>
             </div>
           );
