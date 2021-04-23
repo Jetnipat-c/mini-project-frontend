@@ -5,7 +5,7 @@ export const TransactionStore = create<StroeTransaction>((set,get)=> ({
     userID: 0,
     tranID: 0,
     tranDate: '',
-    tranNote: '0',
+    tranNote: '',
     tranType: false,
     tranAmount: 0,
     setTransaction: (userID,tranID,tranDate,tranNote,tranType,tranAmount) => {
