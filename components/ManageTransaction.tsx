@@ -42,8 +42,8 @@ const ManageTransaction = () => {
           tranID,
         }
       );
-      console.log("xx", result.data);
-      //router.reload();
+      //console.log("xx", result.data);
+      router.reload();
     } catch (e) {
       console.log(e);
     }
@@ -54,8 +54,8 @@ const ManageTransaction = () => {
       let result = await axios.delete(
         `http://localhost:6969/api/transaction/deletetran/${tranID}`
       );
-      console.log("xx", result.data);
-      //router.reload();
+      //console.log("xx", result.data);
+      router.reload();
     } catch (e) {
       console.log(e);
     }
@@ -115,10 +115,10 @@ const ManageTransaction = () => {
         <div>
           <Radio.Group onChange={selectType} value={value}>
             <Radio value={true}>
-              <div className="text-white">รายรับ</div>
+              <div className="dark:text-white ">รายรับ</div>
             </Radio>
             <Radio value={false}>
-              <div className="text-white">รายจ่าย</div>
+              <div className="dark:text-white">รายจ่าย</div>
             </Radio>
           </Radio.Group>
         </div>

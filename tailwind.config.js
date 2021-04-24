@@ -11,6 +11,7 @@ module.exports = {
       title: "#788C95",
       green: "#23e737",
       red: "#FF0000",
+      black: "#000000"
     },
     backgroundColor: (theme) => ({
       ...theme("colors"),
@@ -21,6 +22,7 @@ module.exports = {
       tx: "#788C95",
       bgnav: "#293233",
       modewhite: "#F5F5F5",
+      black: "#000000"
     }),
     boxShadow: {
       sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",

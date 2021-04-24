@@ -75,7 +75,7 @@ const GetTransaction = ({token}) => {
             >
               <div className="col-start-1 col-end-2 m-3">{item.tranDate}</div>
               <div className="col-start-2 col-end-3 m-3">
-                <div className="text-black">{item.tranNote}</div>
+                <div className="dark:text-primary text-base">{item.tranNote}</div>
                 <div>
                   {item.tranType ? (
                     <div>
